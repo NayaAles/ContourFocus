@@ -1,8 +1,8 @@
 ﻿using ContourFocus;
+using OpenQA.Selenium;
 
 var selenium = new Selenium();
 
 ContourFocus.Authorization.Run(selenium);
 
-selenium.GoToUrl(SecureData.Get("LinkListImport"));
-
+ContourFocus.ListInput.Add(selenium);

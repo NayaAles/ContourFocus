@@ -1,17 +1,29 @@
 ﻿
+using System.IO;
+
 namespace ContourFocus
 {
-    public class ListInput
+    public static class ListInput
     {
-        private string Path = @$"{CurrentDirectory.Get()}/Result/test.csv";
         private class ContragentData 
         {
             public string Inn { get; set; } = null!;
         }
 
-        public void Add()
+        public static void Add(Selenium selenium)
         {
-            var dataToLoad = ReaderWriterCsv.ReadFromCsv<ContragentData>(Path, ';');
+            string path = @$"{CurrentDirectory.Get()}\Result\test.csv";
+            //var dataToLoad = ReaderWriterCsv.ReadFromCsv<ContragentData>(path, ';');
+
+            string data = "";
+            using (var reader = new StreamReader(path))
+            {
+                data = reader.ReadToEnd();
+            }
+            
+            selenium.GoToUrl(SecureData.Get("LinkListImport"));
+
+            selenium.InputValue(NavigationBar.InputFieldFromText, Selenium.Type.CssSelector, data);
 
         }
     }
