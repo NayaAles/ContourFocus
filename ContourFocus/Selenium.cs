@@ -18,6 +18,7 @@ namespace ContourFocus
         public void GoToUrl(string Url)
         {
             Driver.Url = Url;
+            Driver.Manage().Window.Maximize();
         }
 
         public void ClickButton(string pathElement, Type type)

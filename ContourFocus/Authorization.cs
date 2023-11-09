@@ -6,7 +6,7 @@ namespace ContourFocus
         private const string ButtonOtherServices = "#appRoot > div > div._2Yzqy > div._3SkPi > div " +
             "> div.I7x9t > button:nth-child(2) > span > span._2Zz_C";
         private const string ButtonExtern = "#appRoot > div > div._2Yzqy > div._3SkPi > div > div._" +
-            "2Sml6 > table > tbody > tr:nth-child(1) > td:nth-child(1) > a > div._3VrF6";
+            "2Sml6 > table > tbody > tr:nth-child(1) > td:nth-child(1) > a > div._2txFW";
         private const string ButtonPassword = "#root > div > div > div.Container__pad_TI7W.Container__large_Z8jS" +
             " > div.Tabs__tabs_MvQQ.Tabs__bigTabs_G2cW > a:nth-child(1) > div > span";
         private const string InputFieldEmail = "#email";

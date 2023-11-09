@@ -12,18 +12,26 @@ namespace ContourFocus
 
         public static void Add(Selenium selenium)
         {
-            string path = @$"{CurrentDirectory.Get()}\Result\test.csv";
-            //var dataToLoad = ReaderWriterCsv.ReadFromCsv<ContragentData>(path, ';');
+            //string path = @$"{CurrentDirectory.Get()}\Result\test.csv";
 
-            string data = "";
-            using (var reader = new StreamReader(path))
+            //selenium.GoToUrl(SecureData.Get("LinkListImport"));
+
+            //selenium.ClickButton(NavigationBar.ButtonFromFile, Selenium.Type.CssSelector);
+            //selenium.ClickButton(NavigationBar.ButtonSelectFile, Selenium.Type.CssSelector);
+
+            //AutoCliker
+            var points = AutoCliker.AddPoints();
+
+            foreach (var point in points)
             {
-                data = reader.ReadToEnd();
+                if (String.IsNullOrEmpty(point.InputText))
+                    AutoCliker.Click(point);
+                else
+                    AutoCliker.InputText(point);
             }
-            
-            selenium.GoToUrl(SecureData.Get("LinkListImport"));
 
-            selenium.InputValue(NavigationBar.InputFieldFromText, Selenium.Type.CssSelector, data);
+
+
 
         }
     }
