@@ -1,4 +1,5 @@
 ﻿
+using OpenQA.Selenium;
 using System.IO;
 
 namespace ContourFocus
@@ -12,16 +13,8 @@ namespace ContourFocus
 
         public static void Add(Selenium selenium)
         {
-            //string path = @$"{CurrentDirectory.Get()}\Result\test.csv";
-
-            //selenium.GoToUrl(SecureData.Get("LinkListImport"));
-
-            //selenium.ClickButton(NavigationBar.ButtonFromFile, Selenium.Type.CssSelector);
-            //selenium.ClickButton(NavigationBar.ButtonSelectFile, Selenium.Type.CssSelector);
-
-            //AutoCliker
+            //  Add csv file with inn to parse
             var points = AutoCliker.AddPoints();
-
             foreach (var point in points)
             {
                 if (String.IsNullOrEmpty(point.InputText))
@@ -30,6 +23,13 @@ namespace ContourFocus
                     AutoCliker.InputText(point);
             }
 
+            //  Add new inns to list
+            selenium.ClickButton(NavigationBar.ButtonShowMore, Selenium.Type.CssSelector);
+            selenium.ClickButton(NavigationBar.ButtonSelectList, Selenium.Type.CssSelector);
+            selenium.ClickButton(NavigationBar.ButtonCompanyAndIP, Selenium.Type.CssSelector);
+            selenium.ClickButton(NavigationBar.ButtonAddToList, Selenium.Type.CssSelector);
+            // Load file in xlsx
+            selenium.ClickButton(NavigationBar.ButtonUploadInXlsx, Selenium.Type.CssSelector);
 
 
 
